@@ -5,7 +5,7 @@ Golang sample application.
 ## Installation
 
 ```
-$ go get -u github/inotom/mymath/cmd/mymath
+$ go get -u github.com/inotom/mymath/cmd/mymath
 ```
 
 ## License
