@@ -1,25 +1,27 @@
 package mymath
 
 import (
-	"fmt"
+	"math"
 	"testing"
 )
 
 func TestSqurt(t *testing.T) {
-	actualNums := []float64{1.0, 2.0, 3.0, 4.0, 5.0}
-	expectedNums := []float64{
-		1.0,
-		1.4142135,
-		1.7320508,
-		2.0,
-		2.2360679,
+
+	var tests = []struct {
+		num  float64
+		want float64
+	}{
+		{1.0, 1.0},
+		{2.0, 1.4142135},
+		{3.0, 1.7320508},
+		{4.0, 2.0},
+		{5.0, 2.2360679},
 	}
 
-	for i, exp := range expectedNums {
-		actual := fmt.Sprintf("%1.8f", Squrt(actualNums[i]))
-		expected := fmt.Sprintf("%1.7f", exp)
-		if actual[:9] != expected {
-			t.Errorf("got %v \nwant %v", actual, expected)
+	for _, test := range tests {
+		got := Squrt(test.num)
+		if math.Abs(got-test.want) > 0.0000001 {
+			t.Errorf("Squrt(%1.8f) returned %1.8f, want %1.8f", test.num, got, test.want)
 		}
 	}
 }
